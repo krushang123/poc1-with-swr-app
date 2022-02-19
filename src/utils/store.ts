@@ -6,8 +6,8 @@ const initialStore = {
   minPrice: 1000,
   maxPrice: 4000,
   sortOrder: "asc",
-  cursor: 1,
-  limit: 10,
+  first: 10,
+  afterCursor: "",
 }
 
 export default initialStore

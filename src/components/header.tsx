@@ -1,7 +1,7 @@
 import * as React from "react"
 import { chakra, Flex } from "@chakra-ui/react"
 
-import SearchBar from "src/components/search-bar"
+import SearchBar from "components/search-bar"
 
 const HeaderContent = ({ fallbackVariables }) => (
   <Flex h='10rem' align='center' justifyContent='center' w='full'>

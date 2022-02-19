@@ -1,6 +1,11 @@
 import { gql } from "apollo-server-micro"
 
 export const typeDefs = gql`
+  type PageInfo {
+    endCursor: String
+    hasNextPage: Boolean
+  }
+
   type Person {
     id: ID!
     name: String!
@@ -9,6 +14,7 @@ export const typeDefs = gql`
     searchString: String!
     imageUrl: String!
     pricePerQty: Float!
+    pageInfo: PageInfo
   }
 
   type Query {
@@ -18,8 +24,8 @@ export const typeDefs = gql`
       minPrice: Int
       maxPrice: Int
       sortOrder: String
-      cursor: Int
-      limit: Int
+      first: Int
+      afterCursor: String
     ): [Person]
   }
 `

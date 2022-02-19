@@ -7,8 +7,8 @@ export const GET_PERSONS = gql`
     $minPrice: Int
     $maxPrice: Int
     $sortOrder: String
-    $cursor: Int
-    $limit: Int
+    $first: Int
+    $afterCursor: String
   ) {
     persons(
       date: $date
@@ -16,8 +16,8 @@ export const GET_PERSONS = gql`
       minPrice: $minPrice
       maxPrice: $maxPrice
       sortOrder: $sortOrder
-      cursor: $cursor
-      limit: $limit
+      first: $first
+      afterCursor: $afterCursor
     ) {
       id
       name
@@ -26,6 +26,10 @@ export const GET_PERSONS = gql`
       searchString
       imageUrl
       pricePerQty
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
     }
   }
 `

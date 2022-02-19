@@ -9,7 +9,12 @@ const SearchBar = ({ fallbackVariables }) => {
 
   const { data, mutate } = useSWR("globalState", {
     fallbackData: fallbackVariables,
+    revalidateOnFocus: false,
+    revalidateIfStale: false,
+    revalidateOnReconnect: false,
   })
+
+  console.log("search data", data)
 
   const [date, setDate] = React.useState(data.date)
   const [searchString, setSearchString] = React.useState(data.searchString)
@@ -55,7 +60,7 @@ const SearchBar = ({ fallbackVariables }) => {
             },
           })
 
-          mutate({ ...data, date, searchString })
+          mutate({ ...data, date, searchString, afterCursor: "" }, true)
         }}
       >
         Search
